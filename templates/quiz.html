@@ -1,14 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang = 'en'>
+
     <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content = "IE=edge">
+        <meta name = "viewport" content="width=device-width, 
+        initial-scale = 1.0">
         <title>Qlympicious</title>
+        <link rel "stylesheet" href="ultimate.css"/>
     </head>
+
     <body>
-        <h1> Quiz on Olympics</h1>
+
+        <header>
+            <h1>Welcome to Olympicious</h1>
+        </header>
+
+        <h2> Quiz on Olympics</h2>
             <form action="/submitquiz", method="post">
             {% for question in questions_list%}
                 <h4>
-                    {{question.question}}
+                    {{question.question}}<br>
                 <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
                 <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
                 <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}

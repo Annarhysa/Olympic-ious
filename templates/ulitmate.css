@@ -1,0 +1,13 @@
+:root {
+    --dark : #374151;
+    --darker: #1F2937;
+    --darkest: #000000;
+    --light: #EEE;
+    --blue: #94bef5;
+    --darkblue: #4b00fa;
+}
+
+header h1{
+    text-align: center;
+    font-style: italic;
+}
