@@ -6,8 +6,16 @@
     <body>
         <h1> Quiz on Olympics</h1>
             <form action="/submitquiz", method="post">
-                <input type ="radio" name="option" value="ekfek"> Select me 
-                
+            {% for question in questions_list%}
+                <h4>
+                    {{question.question}}
+                <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
+                <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
+                <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
+
+                </h4>
+            {% endfor %}
+
                 <br><br>
                 <input type ="submit" name="submitform" value="Submit">
         </form>
