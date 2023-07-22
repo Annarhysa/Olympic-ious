@@ -6,7 +6,7 @@ options = (("A. Citius, Altius, Fortius (Faster, Higher, Stronger)", "B. xyz", "
            ("A. Michael Phelps", "B. Prithvi Shah", "C. Usain Bolt", "D. Fedrer"),
            ("A. London, UK", "B. Beijin, Japan", "C. Paris, Japan", "D. Kolkata, India"), 
            ("A. Polo", "B. Golf", "C. Ice Skating", "D. Ice Hockey"))
-answers = ()
+answers = ("A", "A", "A", "D")
 guesses = []
 score = 0
 question_num = 0
