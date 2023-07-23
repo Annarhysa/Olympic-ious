@@ -9,36 +9,35 @@
         <title>Qlympicious</title>
         <link rel ="stylesheet" href = "{{url_for('static', filename = 'ultimate.css')}}">
 
-        <style>
-            header{
-                text-align: center;
-            }
-        </style>
-
     </head>
 
     <body>
 
-        <header>
+        <header class = "banner">
             <h1>Welcome to Olympicious</h1>
         </header>
 
-        <div class = "rectangular-box">
-            <h2> Quiz on Olympics</h2>
-                <form action="/submitquiz", method="post">
-                {% for question in questions_list%}
-                    <h4>
-                        {{question.question}}<br>
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
+        <br>
+        <br>
+        <div class = "container">
+            <div class = "stats-box gradient1"></div>
+            <div class = "rectangular-box gradient2">
+                <h2> Quiz on Olympics</h2>
+                    <form action="/submitquiz", method="post">
+                    {% for question in questions_list%}
+                        <h4>
+                            {{question.question}}<br>
+                        <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
+                        <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
+                        <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
 
-                    </h4>
-                {% endfor %}
+                        </h4>
+                    {% endfor %}
 
-                    <br>
-                    <input type ="submit" name="submitform" value="Submit">
-            </form>
+                        <br>
+                        <input type ="submit" name="submitform" value="Submit">
+                </form>
+            </div>
         </div>
     </body>
 </html>
