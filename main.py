@@ -39,8 +39,19 @@ def quiz():
 
 @app.route("/submitquiz", methods=['POST', 'GET'])
 def submit():
-    value = request.form['option']
-    return value
+    correct_count = 0
+    for question in questions_list:
+        question_id = str(question.q_id)
+        selected_option = request.form[question_id]
+        correct_option = question.get_correct_option()
+        if selected_option == correct_option:
+            correct_count = correct_count+1
+
+    correct_count = str(correct_count)
+
+    statement = "Your score is "+correct_count+"/4"
+
+    return statement
 
 if __name__ == "__main__":
     app.run(debug=True)
