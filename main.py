@@ -48,7 +48,6 @@ def home():
                 return render_template("quiz.html", stats=stats, country=country_name)
             else:
                 return render_template("error.html")
-    return render_template("quiz.html")
 
 def get_olympic_stats(country_name):
     with open("data/Olympics_summary.csv", newline="", encoding="utf-8") as csvfile:
@@ -57,7 +56,8 @@ def get_olympic_stats(country_name):
             if row["\ufeffcountry_name"] == country_name:
                 summary = row["summary"]
                 return summary
-
+            
+@app.route("/submitquiz", methods=['POST', 'GET'])
 def submit():
     correct_count = 0
     for question in questions_list:
@@ -71,7 +71,7 @@ def submit():
 
     statement = "Your score is "+correct_count+"/4"
 
-    return statement
+    return render_template("quiz.html", score= statement)
 
 if __name__ == "__main__":
     app.run(debug=True)

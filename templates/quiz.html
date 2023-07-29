@@ -46,9 +46,11 @@
                     </h4>
                 {% endfor %}<br>
                 <input type ="submit" name="submitform" value="Submit">
-                
+
                 </form>
-                
+                <form action = "/submitquiz" method="post">
+                    {{ score }}
+                </form>
             </div>
         </div>
     </body>
