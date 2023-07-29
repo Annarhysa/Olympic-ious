@@ -18,8 +18,11 @@
 
         <br>
         <br>
-        <form action = "summary", method="post">
-            <h1>Sorry, no data available for the entered country!</h1>
-        </form>
-</body>
+        <div class = "stats-box gradient1">
+            <form action = "/submitquiz" method="post">
+                <h1>Your Score: {{ score }}</h1>
+            </form>
+            
+        </div>        
+    </body>
 </html>

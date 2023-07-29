@@ -34,11 +34,31 @@ q4 = Question(4, "In which sport did the 'Miracle on Ice' take place during the 
 
 questions_list = [q1, q2, q3, q4]
 
+@app.route("/quiz", methods = ['POST', 'GET'])
+def quiz():
+    return render_template("quiz.html", questions_list = questions_list)
+
+@app.route("/submitquiz", methods=['POST', 'GET'])
+def submit():
+    correct_count = 0
+    for question in questions_list:
+        question_id = str(question.q_id)
+        selected_option = request.form[question_id]
+        correct_option = question.get_correct_option()
+        if selected_option == correct_option:
+            correct_count = correct_count+1
+
+    correct_count = str(correct_count)
+
+    statement = "Your score is "+correct_count+"/4"
+
+    return render_template("exit.html", score = statement)
+
 @app.route("/olympicious")
 def summary():
     return render_template("index.html")
 
-@app.route("/submit", methods=['POST', 'GET'])
+@app.route("/summary", methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
         country_name = request.form['country'].strip().title()
@@ -57,25 +77,11 @@ def get_olympic_stats(country_name):
                 summary = row["summary"]
                 return summary
 
-@app.route("/quiz")
-def quiz():
-    return render_template("quiz.html", question = questions_list)
+@app.route("/stats", methods=['POST', 'GET'])
+def new():
+    return render_template("stats.html")
 
-@app.route("/submitquiz")
-def submit():
-    correct_count = 0
-    for question in questions_list:
-        question_id = str(question.q_id)
-        selected_option = request.form[question_id]
-        correct_option = question.get_correct_option()
-        if selected_option == correct_option:
-            correct_count = correct_count+1
 
-    correct_count = str(correct_count)
-
-    statement = "Your score is "+correct_count+"/4"
-
-    return render_template("quiz.html", score=statement)
 
 if __name__ == "__main__":
     app.run(debug=True)

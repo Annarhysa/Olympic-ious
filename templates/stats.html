@@ -20,18 +20,13 @@
         <br>
         <div class = "stats-box gradient1">
             <form action = "/stats" method="post">
-                <h1>Olympic Summary for {{ country }}:</h1>
-                <h4>
-                    {{ stats }}
-                </h4>
+                <h1>Showing the medal tally for top 10 Countries which are part of Olypics:</h1>
+            </form>
+            
+            <form action = "/quiz" method = "post">
+                <input type ="submit" name="submitpage" value="Next">
             </form>
 
-        <form action = "/quiz" method = "post">
-            <input type ="submit" name="submitpage" value="Next">
-        </form>
-
-        </div>
-
-        
+        </div>        
     </body>
 </html>
