@@ -6,10 +6,14 @@
     <title>Olympic Stats</title>
 </head>
 <body>
-    <h1>Olympic Stats for {{ country }}:</h1>
-    <ul>
-        <li>Summary: {{ stats.summary }}</li>
-    </ul>
+    <h1>Olympic Summary for {{ country }}:</h1>
+    <div>
+        <form action = "/", method = "post">
+            <h4>
+                {{ stats }}
+            </h4>
+        </form>
+    </div>
 </body>
 </html>
 

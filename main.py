@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import csv
 
 app = Flask(__name__)
 
@@ -34,6 +35,25 @@ q4 = Question(4, "In which sport did the 'Miracle on Ice' take place during the 
 questions_list = [q1, q2, q3, q4]
 
 @app.route("/quiz")
+def home():
+    if request.method == "POST":
+        country_name = request.form['country'].strip().title()
+        if country_name:
+            stats = get_olympic_stats(country_name)
+            if stats:
+                return render_template("result.html", stats=stats, country=country_name)
+            else:
+                return render_template("error.html")
+    return render_template("index.html")
+
+def get_olympic_stats(country_name):
+    with open("Olympics_summary.csv", newline="", encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row["\ufeffcountry_name"] == country_name:
+                summary = row["summary"]
+                return summary
+
 def quiz():
     return render_template("quiz.html", questions_list = questions_list)
 
