@@ -18,40 +18,23 @@
 
         <br>
         <br>
-        <div class = "container">
-            <div class = "stats-box gradient1">
-                <form action = "/submitquiz" method="post">
-                    <h1>History of Countries</h1>
-                    <input type="text" name="country" required>
-                    <input type ="submit" name="submitform" value="Submit">
-                </form>
-                <h1>Olympic Summary for {{ country }}:</h1>
-                <form action = "/submitquiz", method = "post">
-                    <h4>
-                        {{ stats }}
-                    </h4>
-                </form>
-            </div>
+        <div class = "rectangular-box gradient2">
+            <form action = "/quiz" method="post">
+                <h2> Quiz on Olympics</h2>
+            {% for question in questions_list%}
+                <h4>
+                    {{question.question}}<br>
+                <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
+                <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
+                <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
 
-            <div class = "rectangular-box gradient2">
-                <form action = "/submitquiz" method="post">
-                    <h2> Quiz on Olympics</h2>
-                {% for question in questions_list%}
-                    <h4>
-                        {{question.question}}<br>
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
-
-                    </h4>
-                {% endfor %}<br>
-                <input type ="submit" name="submitform" value="Submit">
-
-                </form>
-                <form action = "/submitquiz" method="post">
-                    {{ score }}
-                </form>
-            </div>
+                </h4>
+            {% endfor %}<br>
+            </form>
+            <form action = "/submitquiz" method="post">
+                {{ score }}
+            </form>
         </div>
-    </body>
+</body>
 </html>
+

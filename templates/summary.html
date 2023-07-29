@@ -18,6 +18,20 @@
 
         <br>
         <br>
-        <h1>Sorry, no data available for the entered country!</h1>
-</body>
+        <div class = "stats-box gradient1">
+            <form action = "/submit" method="post">
+                <h1>Olympic Summary for {{ country }}:</h1>
+                <h4>
+                    {{ stats }}
+                </h4>
+            </form>
+
+        <form action = "/stats" method = "post">
+            <input type ="submit" name="submitpage" value="Next">
+        </form>
+
+        </div>
+
+        
+    </body>
 </html>
