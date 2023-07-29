@@ -12,27 +12,27 @@
     </head>
 
     <body>
+        <br>
+        <br>
 
         <header class = "banner">
-            <h1>Welcome to Olympicious</h1>
+            <div class="olympicious">
+                <h1>Quiz Time</h1>
+            </div>
+            
         </header>
-
-        <br>
-        <br>
-        <div class = "rectangular-box gradient2">
-            <h2> Quiz on Olympics</h2>
+        <div class = "rectangular-box">
                 <form action="/submitquiz", method="post">
                 {% for question in questions_list%}
-                    <h4>
+                    <h5>
                         {{question.question}}<br>
                     <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
                     <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
                     <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
 
-                    </h4>
+                    </h5>
                 {% endfor %}
 
-                    <br>
                     <input type ="submit" name="submitform" value="Submit"> 
             </form>
         </div>

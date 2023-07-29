@@ -27,12 +27,15 @@ class Question:
         elif self.correctOption == 3:
             return self.option3
 
-q1 = Question(1, "What is the Olympic motto in Latin and what does it mean in English?", "Citius, Altius, Fortius (Faster, Higher, Stronger)", "xyz", "abc", 1)
-q2 = Question(2, "Which athlete has won the most gold medals in Olympic history?", "Michael Phelps", "Prithvi Shah", "Usain Bolt", 1)
+q1 = Question(1, "In which city were the first modern Olympic Games held in 1896?", "Athens, Greexe", "Rome, Italy", "London, United Kingdom", 1)
+q2 = Question(2, "Which athlete has won the most gold medals in Olympic history?", "Michael Phelps", "Katie Ledecky", "Usain Bolt", 1)
 q3 = Question(3, "Which city has hosted the most Olympic Games?", "London, UK", "Bejin, Japan", "Paris, France", 1)
 q4 = Question(4, "In which sport did the 'Miracle on Ice' take place during the 1980 Winter Olympics?", "Ice Skating", "Volleyball", "Ice Hockey", 3)
+q5 = Question(5, "Which Olympic sport involves gliding down a track while lying on a small sled?", "Bosleigh", "Luge", "Skeleton", 3)
+q6 = Question(6, "Which legendary athlete won four gold medals in the 1936 Berlin Olympics and shattered Adolf Hitler's myth of Aryan supremacy?", "Jesse Owens", "Usain Bolt", "Carl Lewis", 1)
+q7 = Question(7, "In which year were women allowed to participate in the modern Olympics for the first time?", "1900", "1920", "1936", 1)
 
-questions_list = [q1, q2, q3, q4]
+questions_list = [q1, q2, q3, q4, q5, q6, q7]
 
 @app.route("/quiz", methods = ['POST', 'GET'])
 def quiz():
@@ -50,7 +53,7 @@ def submit():
 
     correct_count = str(correct_count)
 
-    statement = "Your score is "+correct_count+"/4"
+    statement = correct_count+"/7"
 
     return render_template("exit.html", score = statement)
 

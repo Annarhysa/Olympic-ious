@@ -11,21 +11,24 @@
     </head>
 
     <body>
+        <br>
+        <br>
 
         <header class = "banner">
-            <h1>Welcome to Olympicious</h1>
+            <div class="olympicious">
+                <h1>Time's Tapestry</h1>
+            </div>
+            
         </header>
 
-        <br>
-        <br>
-        <div class = "stats-box gradient1">
+        <div class = "stats-box">
             <form action = "/summary" method="post">
-                <h1>Olympic Summary for {{ country }}:</h1>
+                <h3>{{ country }}:</h3>
                 <h4>
                     {{ stats }}
                 </h4>
             </form>
-
+        
         <form action = "/stats" method = "post">
             <input type ="submit" name="submitpage" value="Next">
         </form>
