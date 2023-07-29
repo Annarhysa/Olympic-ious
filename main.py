@@ -35,6 +35,10 @@ q4 = Question(4, "In which sport did the 'Miracle on Ice' take place during the 
 questions_list = [q1, q2, q3, q4]
 
 @app.route("/country")
+def quiz():
+    return render_template("quiz.html", questions_list = questions_list)
+
+@app.route("/submitquiz", methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
         country_name = request.form['country'].strip().title()
@@ -47,17 +51,13 @@ def home():
     return render_template("quiz.html")
 
 def get_olympic_stats(country_name):
-    with open("Olympics_summary.csv", newline="", encoding="utf-8") as csvfile:
+    with open("data/Olympics_summary.csv", newline="", encoding="utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
             if row["\ufeffcountry_name"] == country_name:
                 summary = row["summary"]
                 return summary
 
-def quiz():
-    return render_template("quiz.html", questions_list = questions_list)
-
-@app.route("/submitquiz", methods=['POST', 'GET'])
 def submit():
     correct_count = 0
     for question in questions_list:

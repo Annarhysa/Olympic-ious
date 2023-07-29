@@ -4,8 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content = "IE=edge">
-        <meta name = "viewport" content="width=device-width, 
-        initial-scale = 1.0">
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0">
         <title>Qlympicious</title>
         <link rel ="stylesheet" href = "{{url_for('static', filename = 'ultimate.css')}}">
 
@@ -22,7 +21,7 @@
         <div class = "container">
             <div class = "stats-box gradient1">
                 <h1>History of Countries</h1>
-                <form action = "/" method="post">
+                <form action = "/submitquiz" method="post">
                     <input type="text" name="country" required>
                     <input type="submit" value="Get Stats">
                 </form>
