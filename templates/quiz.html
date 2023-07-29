@@ -18,18 +18,15 @@
 
         <br>
         <br>
-        <div class = "container">
-            <div class = "stats-box gradient1">
-                <h1>History of Countries</h1>
-                <form action = "/submitquiz" method="post">
-                    <input type="text" name="country" required>
-                    <input type="submit" value="Get Stats">
-                </form>
-            </div>
+        <form action = "/submitquiz" method="post">
+            <div class = "container">
+                <div class = "stats-box gradient1">
+                    <h1>History of Countries</h1>
+                        <input type="text" name="country" required>
+                </div>
 
-            <div class = "rectangular-box gradient2">
-                <h2> Quiz on Olympics</h2>
-                    <form action="/submitquiz", method="post">
+                <div class = "rectangular-box gradient2">
+                    <h2> Quiz on Olympics</h2>
                     {% for question in questions_list%}
                         <h4>
                             {{question.question}}<br>
@@ -40,10 +37,10 @@
                         </h4>
                     {% endfor %}
 
-                        <br>
-                        <input type ="submit" name="submitform" value="Submit">
-                </form>
+                            <br>
+                </div>
             </div>
-        </div>
+        </form>
+        <input type ="submit" name="submitform" value="Submit">
     </body>
 </html>

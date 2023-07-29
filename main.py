@@ -34,11 +34,11 @@ q4 = Question(4, "In which sport did the 'Miracle on Ice' take place during the 
 
 questions_list = [q1, q2, q3, q4]
 
-@app.route("/country")
+@app.route("/Olympicious")
 def quiz():
     return render_template("quiz.html", questions_list = questions_list)
 
-@app.route("/submitquiz", methods=['POST', 'GET'])
+@app.route("/coutntryinfo", methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
         country_name = request.form['country'].strip().title()
@@ -58,6 +58,7 @@ def get_olympic_stats(country_name):
                 summary = row["summary"]
                 return summary
 
+@app.route("/submitquiz", methods = ['POST', 'GET'])
 def submit():
     correct_count = 0
     for question in questions_list:
