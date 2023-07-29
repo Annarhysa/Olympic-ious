@@ -34,7 +34,7 @@ q4 = Question(4, "In which sport did the 'Miracle on Ice' take place during the 
 
 questions_list = [q1, q2, q3, q4]
 
-@app.route("/quiz")
+@app.route("/country")
 def home():
     if request.method == "POST":
         country_name = request.form['country'].strip().title()
@@ -44,7 +44,7 @@ def home():
                 return render_template("result.html", stats=stats, country=country_name)
             else:
                 return render_template("error.html")
-    return render_template("index.html")
+    return render_template("quiz.html")
 
 def get_olympic_stats(country_name):
     with open("Olympics_summary.csv", newline="", encoding="utf-8") as csvfile:

@@ -20,10 +20,17 @@
         <br>
         <br>
         <div class = "container">
-            <div class = "stats-box gradient1"></div>
+            <div class = "stats-box gradient1">
+                <h1>History of Countries</h1>
+                <form action = "/" method="post">
+                    <input type="text" name="country" required>
+                    <input type="submit" value="Get Stats">
+                </form>
+            </div>
+
             <div class = "rectangular-box gradient2">
                 <h2> Quiz on Olympics</h2>
-                    <form action="/", method="post">
+                    <form action="/submitquiz", method="post">
                     {% for question in questions_list%}
                         <h4>
                             {{question.question}}<br>
