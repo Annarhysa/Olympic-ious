@@ -60,14 +60,15 @@ html{
 
 }
 
-.submit{
-    width: 111px;
-    height: 35px;
+.header.teamlogo{
+    width: 92px;
+    height: 104px;
     flex-shrink: 0;
-    border-radius: 40px;
-    border: 1px solid #338AF3;
-    background: rgba(217, 217, 217, 0.00);
-    float: center;
-    margin: 0 auto;
+}
+
+.header.websitelogo{
+    width: 170px;
+    height: 63px;
+    flex-shrink: 0;
 
 }
