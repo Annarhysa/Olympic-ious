@@ -12,21 +12,32 @@
 
     <body>
         <br>
-        <br>
 
-        <header class = "banner">
-            <div class="olympicious">
-                <h1>Time's Tapestry</h1>
+        <div class = "container">
+            <div class = "teamlogo">
+                <img src="{{url_for('static', filename = 'assets/teamlogo.png')}}" class = "teamlogo" alt="teamlogo">
             </div>
+
+            <div class = "websitelogo">
+                <img src="{{url_for('static', filename = 'assets/websitelogo2.png')}} " class = "websitelogo" alt = "websitelogo">
+            </div>
+
+            <div class = "banner">
+                <header class="olympicious">
+                    <p>Time's Tapestry</p>
+                </header>
+            </div>
+
             
-        </header>
+        </div>
+
 
         <div class = "stats-box">
             <form action = "/summary" method="post">
-                <h3>{{ country }}:</h3>
-                <h4>
+                <h4>{{ country }}:</h4>
+                <p>
                     {{ stats }}
-                </h4>
+                </p>
             </form>
         
         <form action = "/stats" method = "post">

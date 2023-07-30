@@ -13,24 +13,37 @@
 
     <body>
         <br>
-        <br>
 
-        <header class = "banner">
-            <div class="olympicious">
-                <h1>Quiz Time</h1>
+        <div class = "container">
+            <div class = "teamlogo">
+                <img src="{{url_for('static', filename = 'assets/teamlogo.png')}}" class = "teamlogo" alt="teamlogo">
             </div>
+
+            <div class = "websitelogo">
+                <img src="{{url_for('static', filename = 'assets/websitelogo2.png')}} " class = "websitelogo" alt = "websitelogo">
+            </div>
+
+            <div class = "banner">
+                <header class="olympicious">
+                    <p>Quiz Time!</p>
+                </header>
+            </div>
+
             
-        </header>
+        </div>
+
         <div class = "rectangular-box">
                 <form action="/submitquiz", method="post">
                 {% for question in questions_list%}
-                    <h5>
-                        {{question.question}}<br>
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
+                    <p>
+                        {{question.question}}
+                        <div class = "options">
+                            <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
+                            <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
+                            <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
+                        </div>
 
-                    </h5>
+                    </p>
                 {% endfor %}
 
                     <input type ="submit" name="submitform" value="Submit"> 

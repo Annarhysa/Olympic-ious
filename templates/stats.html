@@ -12,20 +12,31 @@
 
     <body>
         <br>
-        <br>
 
-        <header class = "banner">
-            <div class="olympicious">
-                <p>Graphicology</p>
+        <div class = "container">
+            <div class = "teamlogo">
+                <img src="{{url_for('static', filename = 'assets/teamlogo.png')}}" class = "teamlogo" alt="teamlogo">
             </div>
+
+            <div class = "websitelogo">
+                <img src="{{url_for('static', filename = 'assets/websitelogo2.png')}} " class = "websitelogo" alt = "websitelogo">
+            </div>
+
+            <div class = "banner">
+                <header class="olympicious">
+                    <p>Analysis</p>
+                </header>
+            </div>
+
             
-        </header>
+        </div>
+
         <br>
         <br>
 
-        <div class = "stats-box gradient1">
+        <div class = "stats-box">
             <form action = "/stats" method="post">
-                <h1>Showing the medal tally for top 10 Countries which are part of Olypics:</h1>
+                <h4>Showing the medal tally for top 10 Countries which are part of Olypics:</h4>
             </form>
             
             <form action = "/quiz" method = "post">

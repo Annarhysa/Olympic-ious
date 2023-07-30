@@ -12,21 +12,26 @@
 
     <body>
         <br>
-        <br>
 
-        <header class = "banner">
+        <div class = "container">
             <div class = "teamlogo">
-                <img href = "assets/teamlogo.png" alt="teamlogo">
+                <img src="{{url_for('static', filename = 'assets/teamlogo.png')}}" class = "teamlogo" alt="teamlogo">
             </div>
-            <div class = "websitelogo">
-                <img href = "assets/websitelogo.png">
-            </div>
-            <div class="olympicious">
-                <p>Olympicious</p>
-            </div>
-            
-        </header>
 
+            <div class = "websitelogo">
+                <img src="{{url_for('static', filename = 'assets/websitelogo2.png')}} " class = "websitelogo" alt = "websitelogo">
+            </div>
+
+            <div class = "banner">
+                <header class="olympicious">
+                    <p>Olympicious</p>
+                </header>
+            </div>
+
+            
+        </div>
+
+        
         <br>
         <br>
         <div class = "stats-box">

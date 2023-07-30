@@ -12,17 +12,28 @@
 
     <body>
         <br>
-        <br>
-        
-        <header class = "banner">
-            <div class="olympicious">
-                <h1>Fun Fact</h1>
+
+        <div class = "container">
+            <div class = "teamlogo">
+                <img src="{{url_for('static', filename = 'assets/teamlogo.png')}}" class = "teamlogo" alt="teamlogo">
             </div>
+
+            <div class = "websitelogo">
+                <img src="{{url_for('static', filename = 'assets/websitelogo2.png')}} " class = "websitelogo" alt = "websitelogo">
+            </div>
+
+            <div class = "banner">
+                <header class="olympicious">
+                    <p>Fun Fact</p>
+                </header>
+            </div>
+
             
-        </header>
-        <div class = "stats-box gradient1">
+        </div>
+
+        <div class = "stats-box">
             <form action = "/submitquiz" method="post">
-                <h1>Your Score: {{ score }}</h1>
+                <h4>Your Score: {{ score }}</h4>
             </form>
             
         </div>        
