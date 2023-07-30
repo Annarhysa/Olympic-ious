@@ -37,13 +37,24 @@
         <div class = "stats-box">
             <p>Welcome to the Olympic-ious, an interactive platform that brings together fans, athletes, and fun quizzes.
                 Join in and fuel your passion for the games!</p>
+                <img src="{{url_for('static', filename = 'assets/olympicslogo.png')}}">
                 <br>
 
             <form action = "/summary" method="post">
                 <p>Enter you desired country</p>
                 <input type="text" name="country" required>
                 <input type ="submit" name="submitform" value="Submit">
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
             </form>
+
         </div>
     </body>
 </html>

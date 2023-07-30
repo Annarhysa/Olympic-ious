@@ -2,17 +2,15 @@ html{
     background-color: #000000;
 }
 
-/*
+
 body{
     margin: 0;
     padding: 0;
-    background-image: url('/static/assets/image 4.png');
+    background-image: url('/static/assets/bg3.png');
     background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: 200px;
     background-blend-mode: lighten;
 }
-*/
+
 
 .stats-box{
     color: #FFF;
@@ -22,9 +20,9 @@ body{
     font-style: unset;
     font-weight: 10px;
     line-height: normal;
-    width: 690px;
+    width: 700px;
     margin: 0 auto;
-    justify-content: space-between;
+    justify-content: center;
 
 }
 
@@ -37,8 +35,8 @@ body{
     font-weight: 10px;
     line-height: normal;
     margin: 0 auto;
-    width: 690px;
-    justify-content: space-between;
+    width: 700px;
+    justify-content: center;
 }
 
 .banner{

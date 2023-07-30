@@ -34,6 +34,7 @@
 
         <div class = "rectangular-box">
                 <form action="/submitquiz", method="post">
+                    <h4><p><i>Test your knowledge and have a blast with our Olympics-themed quiz section. Let's see how well you know the Olympics!</p></i></h4>
                 {% for question in questions_list%}
                     <p>
                         {{question.question}}
@@ -47,6 +48,10 @@
                 {% endfor %}
 
                     <input type ="submit" name="submitform" value="Submit"> 
+
+                    <br>
+                <br>
+                <br>
             </form>
         </div>
     </body>

@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import csv
+import random
 
 app = Flask(__name__)
 
@@ -51,11 +52,25 @@ def submit():
         if selected_option == correct_option:
             correct_count = correct_count+1
 
+    if (correct_count>=0 and correct_count<=4):
+        compliment = "Better Luck Next Time"
+    elif (correct_count>=5 and correct_count<=6):
+        compliment = "Wow, Not Bad!"
+    elif(correct_count>6):
+        compliment = "You must be a genius"
+    
     correct_count = str(correct_count)
-
     statement = correct_count+"/7"
 
-    return render_template("exit.html", score = statement)
+    facts = ["Ancient 'Naked' Olympics: In ancient Greece, athletes competed in the nude. The word 'gymnasium' comes from the Greek word 'gymnos,' meaning naked.",
+             "Jesse Owens' Triumph: African-American athlete Jesse Owens won four gold medals in the 1936 Berlin Olympics, disproving Adolf Hitler's theory of Aryan racial superiority.",
+             "London's Three-Time Host: London, England, has hosted the Olympics three times (1908, 1948, and 2012), making it the only city to do so.",
+             "The 1964 Tokyo Olympics were the first held in Asia, and the 2008 Beijing Olympics were notable for being held at high altitude, affecting some endurance events.",
+             "In recent Olympics, efforts have been made to use environmentally friendly materials. For instance, the medals at the 2020 Tokyo Olympics were made from recycled electronic devices.",
+             "In the 1900 Paris Olympics, there was an event called 'live pigeon shooting,' where contestants shot at live pigeons released from traps. Over 300 birds were killed, leading to outrage, and the event was never repeated.",
+    ]
+
+    return render_template("exit.html", score = statement, compliment = compliment, fact = random.choice(facts))
 
 @app.route("/olympicious")
 def summary():
