@@ -99,8 +99,9 @@ def home():
         country_name = request.form['country'].strip().title()
         if country_name:
             stats = get_olympic_stats(country_name)
+            url = images(country_name)
             if stats:
-                return render_template("summary.html", stats=stats, country=country_name)
+                return render_template("summary.html", stats=stats, country=country_name, file = url)
             else:
                 return render_template("error.html")
             
@@ -116,6 +117,31 @@ def get_olympic_stats(country_name):
 #fucntion to add images of countries
 def images(country_name):
     country = country_name.lower()
+    data = {
+        'united states of america': 1, 'russia': 2, 'china': 3, 'germany':4, 'great britain':5, 'australia':6, 
+        'japan': 7, 'france': 8, 'italy': 9, 'brazil': 10}
+    
+    keys = data.keys()
+
+    for n in keys:
+        if n == country:
+            value = data[n]
+    
+    image_map = {
+        1: 'assets/usa.jpeg',
+        2: 'assets/Russia.jpg',
+        3: 'assets/china.jpg',
+        4: 'assets/germany.jpg',
+        5: 'assets/gb.jpg',
+        6: 'assets/australia.webp',
+        7: 'assets/japan.webp',
+        8: 'assets/france.jpg',
+        9: 'assets/itlay.jpg',
+        10: 'assets/brazil.jpg',
+    }
+
+    image_filename = image_map.get(value)
+    return image_filename
 
 
 
