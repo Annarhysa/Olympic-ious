@@ -12,29 +12,56 @@
     </head>
 
     <body>
-
-        <header class = "banner">
-            <h1>Welcome to Olympicious</h1>
-        </header>
-
         <br>
-        <br>
-        <div class = "rectangular-box gradient2">
-            <h2> Quiz on Olympics</h2>
-                <form action="/submitquiz", method="post">
+
+        <div class = "container">
+            <div class = "teamlogo">
+                <img src="{{url_for('static', filename = 'assets/teamlogo.png')}}" class = "teamlogo" alt="teamlogo">
+            </div>
+
+            <div class = "websitelogo">
+                <img src="{{url_for('static', filename = 'assets/websitelogo2.png')}} " class = "websitelogo" alt = "websitelogo">
+            </div>
+
+            <div class = "banner">
+                <header class="olympicious">
+                    <p>Quiz Time!</p>
+                </header>
+            </div>
+
+            
+        </div>
+
+        <div class = "rectangular-box">
+            <form action="/submitquiz", method="post">
+                <h4><p><i>Test your knowledge and have a blast with our Olympics-themed quiz section. Let's see how well you know the Olympics!</p></i></h4>
                 {% for question in questions_list%}
-                    <h4>
-                        {{question.question}}<br>
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
-                    <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
+                    <p>
+                        {{question.question}}
+                        <div class = "options">
+                            <input type ="radio" name="{{question.q_id}}" value="{{question.option1}}"> {{question.option1}}
+                            <input type ="radio" name="{{question.q_id}}" value="{{question.option2}}"> {{question.option2}}
+                            <input type ="radio" name="{{question.q_id}}" value="{{question.option3}}"> {{question.option3}}
+                        </div>
 
-                    </h4>
+                    </p>
                 {% endfor %}
 
-                    <br>
-                    <input type ="submit" name="submitform" value="Submit"> 
+                <br>
+                <br>
+
+                <div class = "container">
+                    <div class = "next">
+                        <input type ="submit" name="submitform" value="Exit"> 
+                    </div>
             </form>
+                    <div class = "back">
+                        <form action="/olympicious" method = "get">
+                            <input type = "submit", name = "back", value = "Home">
+                        </form>
+                    </div>
+                </div>
+                <br>
         </div>
     </body>
 </html>

@@ -11,19 +11,50 @@
     </head>
 
     <body>
+        <br>
 
-        <header class = "banner">
-            <h1>Welcome to Olympicious</h1>
-        </header>
+        <div class = "container">
+            <div class = "teamlogo">
+                <img src="{{url_for('static', filename = 'assets/teamlogo.png')}}" class = "teamlogo" alt="teamlogo">
+            </div>
 
+            <div class = "websitelogo">
+                <img src="{{url_for('static', filename = 'assets/websitelogo2.png')}} " class = "websitelogo" alt = "websitelogo">
+            </div>
+
+            <div class = "banner">
+                <header class="olympicious">
+                    <p>Olympicious</p>
+                </header>
+            </div>
+
+            
+        </div>
+
+        
         <br>
         <br>
-        <div class = "stats-box gradient1">
-            <form action = "/summary" method="post">
-                <h1>History of Countries</h1>
-                <input type="text" name="country" required>
-                <input type ="submit" name="submitform" value="Submit">
+        <div class = "stats-box">
+            <p>Welcome to the Olympic-ious, an interactive platform that brings together fans, athletes, and fun quizzes.
+                Join in and fuel your passion for the games!</p>
+                <img src="{{url_for('static', filename = 'assets/olympicslogo.png')}}">
+                <br>
+            
+            <p>Let's have a look at the Olympic's medal tally</p>
+
+            <form action = "/stats" method="post">
+                <input type ="submit" name="submitform" value="Next">
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
             </form>
+
         </div>
     </body>
 </html>

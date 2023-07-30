@@ -10,17 +10,48 @@
 
     </head>
 
+
     <body>
-
-        <header class = "banner">
-            <h1>Welcome to Olympicious</h1>
-        </header>
-
         <br>
-        <br>
-        <div class = "stats-box gradient1">
+
+        <div class = "container">
+            <div class = "teamlogo">
+                <img src="{{url_for('static', filename = 'assets/teamlogo.png')}}" class = "teamlogo" alt="teamlogo">
+            </div>
+
+            <div class = "websitelogo">
+                <img src="{{url_for('static', filename = 'assets/websitelogo2.png')}} " class = "websitelogo" alt = "websitelogo">
+            </div>
+
+            <div class = "banner">
+                <header class="olympicious">
+                    <p>Fun Fact</p>
+                </header>
+            </div>
+
+            
+        </div>
+
+        <div class = "stats-box">
             <form action = "/submitquiz" method="post">
-                <h1>Your Score: {{ score }}</h1>
+                <h4>Your Score: {{ score }}</h4>
+                <p><i>{{ compliment }}</i></p>
+                
+                <br>
+
+                <p>Here is a crazy Olympics fact for you: </p>
+                <p>{{ fact }}</p>
+
+                <br>
+
+                <p>Thank you for visiting our website</p>
+            </form>
+
+            <br>
+            <br>
+
+            <form action="/olympicious" method = "get">
+                <input type = "submit", name = "back", value = "Home">
             </form>
             
         </div>        

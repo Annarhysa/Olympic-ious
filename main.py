@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request
 import csv
+import random
 
 app = Flask(__name__)
 
+#class for questions of quiz
 class Question:
     q_id = -1
     question = ""
@@ -27,17 +29,29 @@ class Question:
         elif self.correctOption == 3:
             return self.option3
 
-q1 = Question(1, "What is the Olympic motto in Latin and what does it mean in English?", "Citius, Altius, Fortius (Faster, Higher, Stronger)", "xyz", "abc", 1)
-q2 = Question(2, "Which athlete has won the most gold medals in Olympic history?", "Michael Phelps", "Prithvi Shah", "Usain Bolt", 1)
+q1 = Question(1, "In which city were the first modern Olympic Games held in 1896?", "Athens, Greexe", "Rome, Italy", "London, United Kingdom", 1)
+q2 = Question(2, "Which athlete has won the most gold medals in Olympic history?", "Michael Phelps", "Katie Ledecky", "Usain Bolt", 1)
 q3 = Question(3, "Which city has hosted the most Olympic Games?", "London, UK", "Bejin, Japan", "Paris, France", 1)
 q4 = Question(4, "In which sport did the 'Miracle on Ice' take place during the 1980 Winter Olympics?", "Ice Skating", "Volleyball", "Ice Hockey", 3)
+q5 = Question(5, "Which Olympic sport involves gliding down a track while lying on a small sled?", "Bosleigh", "Luge", "Skeleton", 3)
+q6 = Question(6, "Which legendary athlete won four gold medals in the 1936 Berlin Olympics and shattered Adolf Hitler's myth of Aryan supremacy?", "Jesse Owens", "Usain Bolt", "Carl Lewis", 1)
+q7 = Question(7, "In which year were women allowed to participate in the modern Olympics for the first time?", "1900", "1920", "1936", 1)
 
-questions_list = [q1, q2, q3, q4]
+questions_list = [q1, q2, q3, q4, q5, q6, q7]
 
+
+
+
+
+#route to quiz page
 @app.route("/quiz", methods = ['POST', 'GET'])
 def quiz():
     return render_template("quiz.html", questions_list = questions_list)
 
+
+
+
+#route to score display page
 @app.route("/submitquiz", methods=['POST', 'GET'])
 def submit():
     correct_count = 0
@@ -47,17 +61,38 @@ def submit():
         correct_option = question.get_correct_option()
         if selected_option == correct_option:
             correct_count = correct_count+1
-
+    
+    if (correct_count>=0 and correct_count<=4):
+        compliment = "Better Luck Next Time"
+    elif (correct_count>=5 and correct_count<=6):
+        compliment = "Wow, Not Bad!"
+    elif(correct_count>6):
+        compliment = "You must be a genius"
+    
     correct_count = str(correct_count)
+    statement = correct_count+"/7"
 
-    statement = "Your score is "+correct_count+"/4"
+    facts = ["Ancient 'Naked' Olympics: In ancient Greece, athletes competed in the nude. The word 'gymnasium' comes from the Greek word 'gymnos,' meaning naked.",
+             "Jesse Owens' Triumph: African-American athlete Jesse Owens won four gold medals in the 1936 Berlin Olympics, disproving Adolf Hitler's theory of Aryan racial superiority.",
+             "London's Three-Time Host: London, England, has hosted the Olympics three times (1908, 1948, and 2012), making it the only city to do so.",
+             "The 1964 Tokyo Olympics were the first held in Asia, and the 2008 Beijing Olympics were notable for being held at high altitude, affecting some endurance events.",
+             "In recent Olympics, efforts have been made to use environmentally friendly materials. For instance, the medals at the 2020 Tokyo Olympics were made from recycled electronic devices.",
+             "In the 1900 Paris Olympics, there was an event called 'live pigeon shooting,' where contestants shot at live pigeons released from traps. Over 300 birds were killed, leading to outrage, and the event was never repeated.",
+    ]
 
-    return render_template("exit.html", score = statement)
+    return render_template("exit.html", score = statement, compliment = compliment, fact = random.choice(facts))
 
+
+
+
+#route to home page
 @app.route("/olympicious")
 def summary():
     return render_template("index.html")
 
+
+
+#route to olympics history page
 @app.route("/summary", methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
@@ -68,7 +103,8 @@ def home():
                 return render_template("summary.html", stats=stats, country=country_name)
             else:
                 return render_template("error.html")
-
+            
+#function to get the summary from csv file
 def get_olympic_stats(country_name):
     with open("data/Olympics_summary.csv", newline="", encoding="utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -76,12 +112,20 @@ def get_olympic_stats(country_name):
             if row["\ufeffcountry_name"] == country_name:
                 summary = row["summary"]
                 return summary
+            
+#fucntion to add images of countries
+def images(country_name):
+    country = country_name.lower()
 
+
+
+
+#route to show top 10 countries graphs
 @app.route("/stats", methods=['POST', 'GET'])
 def new():
     return render_template("stats.html")
 
 
-
+#main
 if __name__ == "__main__":
     app.run(debug=True)
