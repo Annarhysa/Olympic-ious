@@ -126,25 +126,20 @@ def images(country_name):
     for n in keys:
         if n == country:
             value = data[n]
+            image_map = {
+                1: 'assets/usa.jpeg',
+                2: 'assets/Russia.jpg',
+                3: 'assets/china.jpg',
+                4: 'assets/germany.jpg',
+                5: 'assets/gb.jpg',
+                6: 'assets/australia.webp',
+                7: 'assets/japan.webp',
+                8: 'assets/france.jpg',
+                9: 'assets/itlay.jpg',
+                10: 'assets/brazil.jpg',}
+            image_filename = image_map.get(value)
+            return image_filename
     
-    image_map = {
-        1: 'assets/usa.jpeg',
-        2: 'assets/Russia.jpg',
-        3: 'assets/china.jpg',
-        4: 'assets/germany.jpg',
-        5: 'assets/gb.jpg',
-        6: 'assets/australia.webp',
-        7: 'assets/japan.webp',
-        8: 'assets/france.jpg',
-        9: 'assets/itlay.jpg',
-        10: 'assets/brazil.jpg',
-    }
-
-    image_filename = image_map.get(value)
-    return image_filename
-
-
-
 
 #route to show top 10 countries graphs
 @app.route("/stats", methods=['POST', 'GET'])
