@@ -4,6 +4,7 @@ import random
 
 app = Flask(__name__)
 
+#class for questions of quiz
 class Question:
     q_id = -1
     question = ""
@@ -38,10 +39,19 @@ q7 = Question(7, "In which year were women allowed to participate in the modern 
 
 questions_list = [q1, q2, q3, q4, q5, q6, q7]
 
+
+
+
+
+#route to quiz page
 @app.route("/quiz", methods = ['POST', 'GET'])
 def quiz():
     return render_template("quiz.html", questions_list = questions_list)
 
+
+
+
+#route to score display page
 @app.route("/submitquiz", methods=['POST', 'GET'])
 def submit():
     correct_count = 0
@@ -51,9 +61,6 @@ def submit():
         correct_option = question.get_correct_option()
         if selected_option == correct_option:
             correct_count = correct_count+1
-
-    if not selected_option:
-        return render_template("error.html")
     
     if (correct_count>=0 and correct_count<=4):
         compliment = "Better Luck Next Time"
@@ -75,10 +82,17 @@ def submit():
 
     return render_template("exit.html", score = statement, compliment = compliment, fact = random.choice(facts))
 
+
+
+
+#route to home page
 @app.route("/olympicious")
 def summary():
     return render_template("index.html")
 
+
+
+#route to olumpics history page
 @app.route("/summary", methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
@@ -89,7 +103,8 @@ def home():
                 return render_template("summary.html", stats=stats, country=country_name)
             else:
                 return render_template("error.html")
-
+            
+#function to get the summary from csv file
 def get_olympic_stats(country_name):
     with open("data/Olympics_summary.csv", newline="", encoding="utf-8") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -98,11 +113,15 @@ def get_olympic_stats(country_name):
                 summary = row["summary"]
                 return summary
 
+
+
+
+#route to show top 10 countries graphs
 @app.route("/stats", methods=['POST', 'GET'])
 def new():
     return render_template("stats.html")
 
 
-
+#main
 if __name__ == "__main__":
     app.run(debug=True)
