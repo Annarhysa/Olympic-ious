@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang = 'en'>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content = "IE=edge">
+        <meta name = "viewport" content="width=device-width, initial-scale = 1.0">
+        <title>Qlympicious</title>
+        <link rel ="stylesheet" href = "{{url_for('static', filename = 'ultimate.css')}}">
+
+    </head>
+
+    <body>
+
+        <header class = "banner">
+            <h1>Welcome to Olympicious</h1>
+        </header>
+
+        <br>
+        <br>
+        <div class = "stats-box gradient1">
+            <form action = "/summary" method="post">
+                <h1>History of Countries</h1>
+                <input type="text" name="country" required>
+                <input type ="submit" name="submitform" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>

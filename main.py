@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import csv
 
 app = Flask(__name__)
 
@@ -33,14 +34,54 @@ q4 = Question(4, "In which sport did the 'Miracle on Ice' take place during the 
 
 questions_list = [q1, q2, q3, q4]
 
-@app.route("/quiz")
+@app.route("/quiz", methods = ['POST', 'GET'])
 def quiz():
     return render_template("quiz.html", questions_list = questions_list)
 
 @app.route("/submitquiz", methods=['POST', 'GET'])
 def submit():
-    value = request.form['option']
-    return value
+    correct_count = 0
+    for question in questions_list:
+        question_id = str(question.q_id)
+        selected_option = request.form[question_id]
+        correct_option = question.get_correct_option()
+        if selected_option == correct_option:
+            correct_count = correct_count+1
+
+    correct_count = str(correct_count)
+
+    statement = "Your score is "+correct_count+"/4"
+
+    return render_template("exit.html", score = statement)
+
+@app.route("/olympicious")
+def summary():
+    return render_template("index.html")
+
+@app.route("/summary", methods=['POST', 'GET'])
+def home():
+    if request.method == "POST":
+        country_name = request.form['country'].strip().title()
+        if country_name:
+            stats = get_olympic_stats(country_name)
+            if stats:
+                return render_template("summary.html", stats=stats, country=country_name)
+            else:
+                return render_template("error.html")
+
+def get_olympic_stats(country_name):
+    with open("data/Olympics_summary.csv", newline="", encoding="utf-8") as csvfile:
+        reader = csv.DictReader(csvfile)
+        for row in reader:
+            if row["\ufeffcountry_name"] == country_name:
+                summary = row["summary"]
+                return summary
+
+@app.route("/stats", methods=['POST', 'GET'])
+def new():
+    return render_template("stats.html")
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
