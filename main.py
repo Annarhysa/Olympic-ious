@@ -92,7 +92,7 @@ def summary():
 
 
 
-#route to olumpics history page
+#route to olympics history page
 @app.route("/summary", methods=['POST', 'GET'])
 def home():
     if request.method == "POST":
@@ -112,6 +112,10 @@ def get_olympic_stats(country_name):
             if row["\ufeffcountry_name"] == country_name:
                 summary = row["summary"]
                 return summary
+            
+#fucntion to add images of countries
+def images(country_name):
+    country = country_name.lower()
 
 
 

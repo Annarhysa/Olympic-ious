@@ -37,23 +37,29 @@
         <div class = "stats-box">
             <form action = "/stats" method="post">
                 <h4>Showing the medal tally for top 10 Countries which are part of Olypics:</h4>
+
             </form>
-            
             <br>
-            
-            <div class = "container">
-                <div class ="next">
-                    <form action = "/quiz" method = "post">
-                        <input type ="submit" name="submitpage" value="Next">
-                    </form>    
-                </div>
+
+            <form action = "/summary" method="post">
+                <p>Enter you desired country</p>
+                <input type="text" name="country" required>
+
+                <br>
+                <br>
                 
-                <div class = "back">
-                    <form action="/olympicious" method = "get">
-                        <input type = "submit", name = "back", value = "Home">
-                    </form>
-                </div>
-            </div> 
+                <div class = "container">
+                    <div class ="next">
+                        <input type ="submit" name="submitform" value="Get Info">
+                    </div>
+            </form>
+
+                    <div class = "back">
+                        <form action="/olympicious" method = "get">
+                            <input type = "submit", name = "back", value = "Home">
+                        </form>
+                    </div>
+                </div> 
         </div> 
         <br>
         <br>
