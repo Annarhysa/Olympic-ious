@@ -92,3 +92,11 @@ body{
     font-style: italic;
     color: rgb(107, 107, 240)
 }
+
+.next{
+    float: right;
+}
+
+.back{
+    float: left;
+}

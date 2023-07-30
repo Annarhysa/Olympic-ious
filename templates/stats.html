@@ -39,15 +39,24 @@
                 <h4>Showing the medal tally for top 10 Countries which are part of Olypics:</h4>
             </form>
             
-            <form action = "/quiz" method = "post">
-                <input type ="submit" name="submitpage" value="Next">
-
-                <br>
-                <br>
-                <br>
+            <br>
+            
+            <div class = "container">
+                <div class ="next">
+                    <form action = "/quiz" method = "post">
+                        <input type ="submit" name="submitpage" value="Next">
+                    </form>    
+                </div>
                 
-            </form>
-
-        </div>        
+                <div class = "back">
+                    <form action="/olympicious" method = "get">
+                        <input type = "submit", name = "back", value = "Home">
+                    </form>
+                </div>
+            </div> 
+        </div> 
+        <br>
+        <br>
+        <br>      
     </body>
 </html>

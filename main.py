@@ -52,6 +52,9 @@ def submit():
         if selected_option == correct_option:
             correct_count = correct_count+1
 
+    if not selected_option:
+        return render_template("error.html")
+    
     if (correct_count>=0 and correct_count<=4):
         compliment = "Better Luck Next Time"
     elif (correct_count>=5 and correct_count<=6):

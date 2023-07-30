@@ -39,11 +39,25 @@
                     {{ stats }}
                 </p>
             </form>
-        
-        <form action = "/stats" method = "post">
-            <input type ="submit" name="submitpage" value="Next">
 
             <br>
+
+            <div class = "container">
+                <div class ="next">
+                    <form action = "/stats" method = "post">
+                        <input type ="submit" name="submitpage" value="Next">
+                    </form>    
+                </div>
+                
+                <div class = "back">
+                    <form action="/olympicious" method = "get">
+                        <input type = "submit", name = "back", value = "Home">
+                    </form>
+                </div>
+        
+        </div>
+
+        <br>
                 <br>
                 <br>
                 <br>
@@ -52,7 +66,6 @@
                 <br>
                 <br>
                 
-        </form>
 
         </div>
 
