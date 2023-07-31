@@ -126,8 +126,6 @@ def images(country_name):
     for n in keys:
         if n == country:
             value = data[n]
-        else:
-            return render_template("error.html")
     
     image_map = {
         1: 'assets/usa.jpeg',
