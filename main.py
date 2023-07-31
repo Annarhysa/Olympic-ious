@@ -152,6 +152,6 @@ def new():
     return render_template("stats.html")
 
 
-''' main
+# main
 if __name__ == "__main__":
-    app.run(debug=True)'''
+    app.run(debug=True)
